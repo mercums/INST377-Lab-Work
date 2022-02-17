@@ -2,48 +2,61 @@
 <html>
 
 <head>
+    <meta charset="UTF-8"/>
     <title>Mercy Akede Lab 1: Intro to HTML</title>
+    <link rel="stylsheet" href="styles.css"/>
 </head>
 
 <body>
-    <h1>Mercy Akede Lab 1: Intro to HTML</h1>
+    <div class="wrapper">
+        <h1 class="header">Mercy Akede Lab 2: CSS Selectors</h1>
+        <nav>
+            <a href="index.html"> Main Page</a>
+            <a href="selectors.html">Selectors</a>
+        </nav>
+        <h2>First, the basics</h2>
+        <p>You need the following to build your website.</p>
+        <div class="section_1">
+            <ul>
+                <li>HTML and CSS</li>
+                <li>Javascript
+                <li>Node.js</li>
+                <li>And other web development frameworks</li>
+            </ul>
+            <p>You should list your top 3 goals for the class below.</p>
+            <ol>
+                <li>Become proficient in web development</li>
+                <li>Improve Git collaboration skills</li>
+                <li>Learn how to connect databases to websites</li>
+            </ol>
+        </div>
+        <div class="section_2">
+            <h2>Let's Try Some Inline Elements</h2>
+            <p>Sometimes you want to draw attention to <em> something in a line of text.</em></p>
+            <p>Sometimes you want to <strong>strongly emphasize something</strong> in the text.</p>
+            <p>Sometimes you want to <em><strong>do both</strong></em>.</p>
+        </div>
+        <h2>Empty Elements</h2>
 
-    <h2>First, the basics</h2>
-    <p>You need the following to build your website.</p>
-    <ul>
-        <li>HTML and CSS</li>
-        <li>Javascript
-        <li>Node.js</li>
-        <li>And other web development frameworks</li>
-    </ul>
-    <p>You should list your top 3 goals for the class below.</p>
-    <ol>
-        <li>Become proficient in web development</li>
-        <li>Improve Git collaboration skills</li>
-        <li>Learn how to connect databases to websites</li>
-    </ol>
+        <p>Soft line breaks can't wrap anything. <br/>Neither can image tags, or hard lines.<br/>
+            Add a hard line under here, and make sure you've used some soft line breaks to match your page to the sample.
+        </p>
+        <hr/>
 
-    <h2>Let's Try Some Inline Elements</h2>
-    <p>Sometimes you want to draw attention to <em>in a line of text.</em></p>
-    <p>Sometimes you want to <strong>strongly emphasize something</strong> in the text.</p>
-    <p>Sometimes you want to <em><strong>do both</strong></em>.</p>
-
-    <h2>Empty Elements</h2>
-
-    <p>Soft line breaks can't wrap anything. <br />Neither can image tags, or hard lines.<br />
-        Add a hard line under here, and make sure you've used some soft line breaks to match your page to the sample.
-    </p>
-    <hr />
-    <h2>Images</h2>
-    <p>Don't forget to use alt text on your images. It's important for accessibility.</p>
-    <img src="images/mochi.jpg" alt='JPG mochi' />
-    <img src="images/mochi.png" alt='PNG mochi' />
-    <img src="images/mochi.svg" alt='SVG mochi' />
-    <img src="images/mochi.gif" alt='GIF mochi' />
-
-    <p><a href='https://github.com/mercums/INST377-Lab-Work'>Include a hyperlink here to your github repository for
-            class.</a></p>
-    <p>If you want your repo to be private, be sure to invite Prof A as a "collaborator."</p>
+        <div class="section_4">
+            <h2>Images</h2>
+            <p>Don't forget to use alt text on your images. It's important for accessibility.</p>
+        </div>
+        <img src="images/mochi.jpg" alt='JPG mochi' />
+        <img src="images/mochi.png" alt='PNG mochi' />
+        <img src="images/mochi.svg" alt='SVG mochi' />
+        <img src="images/mochi.gif" alt='GIF mochi' />
+        <div class="footer">
+            <p><a href='https://github.com/mercums/INST377-Lab-Work'>Include a hyperlink here to your github repository for
+                    class.</a></p>
+            <p>If you want your repo to be private, be sure to invite Prof A as a "collaborator."</p>
+        </div>
+    </div>   
 </body>
 
 </html>
