@@ -1,13 +1,24 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable no-use-before-define */
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
   let squares = Array.from(document.querySelectorAll('.grid div'));
-  const ScoreDisplay = document.querySelector('#score');
-  const StartBtn = document.querySelector('#start-button');
+  const scoreDisplay = document.querySelector('#score');
+  const startBtn = document.querySelector('#start-button');
   const width = 10;
   let nextRandom = 0;
-  //  console.log(squares); allows browser view of squares in an array
+  let timerId;
+  let score = 0;
 
-  //The Tetriminos
+  const colors = [
+    'orange',
+    'red',
+    'purple',
+    'green',
+    'blue'
+  ]
+
+  // The Tetriminos
   const lTetriminos = [
     [1, width+1, width*2+1, 2],
     [width, width+1, width+2, width*2+2],
@@ -54,17 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetrimino');
+      squares[currentPosition + index].style.backgroundColor = colors[random];
+
     })
   }
 
   function undraw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.remove('tetrimino');
+      squares[currentPosition + index].style.backgroundColor = ''
     })
   }
 
   // make the tetrimino move down ever second
-  timerId = setInterval(moveDown, 1000);
+  // timerId = setInterval(moveDown, 1000);
 
   // assign functin to keyCodes
   function control (e) {
@@ -99,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition = 4;
       draw();
       displayShape();
+      addScore();
+      gameOver();
     }
   }
 
@@ -144,14 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // show up-next tetrimino in mini-grid
   const displaySquares = document.querySelectorAll('.mini-grid div');
   const displayWidth = 4;
-  let displayIndex = 0;
+  const displayIndex = 0;
 
   // the tetriminos without rotations
   const upNextTetriminoes = [
     [1, displayWidth+1, displayWidth*2+1, 2], // lTetrimino
     [0, displayWidth, displayWidth+1, displayWidth*2+1], // zTetrimino
-    [0, displayWidth, 1, displayWidth+1], // oTetrimino 
     [1, displayWidth+1, displayWidth, displayWidth+2],  // tTetrimino
+    [0, displayWidth, 1, displayWidth+1], // oTetrimino 
     [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] // iTetrimino
   ];
 
@@ -160,9 +176,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // remove any trace of a tetrimino from the entire mini grid
     displaySquares.forEach(square => {
       square.classList.remove('tetrimino');
+      square.style.backgroundColor = '';
     })
     upNextTetriminoes[nextRandom].forEach(index => {
       displaySquares[displayIndex + index].classList.add('tetrimino');
+      displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom];
     })
+  }
+
+  // add button functionality
+  startBtn.addEventListener('click', () => {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    } else {
+      draw();
+      timerId = setInterval(moveDown, 1000);
+      nextRandom = Math.floor(Math.random()*theTetriminos.length);
+      displayShape();
+    }
+  })
+
+  // add score
+  function addScore() {
+    for (let i = 0; i <199; i += width) {
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+      
+      if (row.every(index => squares[index].classList.contains('taken'))) {
+        score += 10;
+        scoreDisplay.innerHTML = score;
+        row.forEach(index => {
+          squares[index].classList.remove('taken');
+          squares[index].classList.remove('tetrimino');
+          squares[index].style.backgroundColor = '';
+        })
+        const squaresRemoved = squares.splice(i, width);
+        squares = squaresRemoved.concat(squares);
+        squares.forEach(cell => grid.appendChild(cell ))
+      }
+    }
+  }
+
+  // game over
+  function gameOver() {
+    if(current.some(index => squares[currentPosition+index].classList.contains('taken'))) {
+      scoreDisplay.innerHTML = 'end';
+      clearInterval(timerId);
+    }
   }
 })
