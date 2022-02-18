@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ScoreDisplay = document.querySelector('#score');
   const StartBtn = document.querySelector('#start-button');
   const width = 10;
-
+  let nextRandom = 0;
   //  console.log(squares); allows browser view of squares in an array
 
   //The Tetriminos
@@ -93,10 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'));
       // start a new tetrimino falling
-      random = Math.floor(Math.random() * theTetriminos.length);
+      random = nextRandom;
+      nextRandom = Math.floor(Math.random() * theTetriminos.length);
       current = theTetriminos[random][currentRotation];
       currentPosition = 4;
       draw();
+      displayShape();
     }
   }
 
@@ -137,5 +139,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     current = theTetriminos[random][currentRotation];
     draw();
+  }
+
+  // show up-next tetrimino in mini-grid
+  const displaySquares = document.querySelectorAll('.mini-grid div');
+  const displayWidth = 4;
+  let displayIndex = 0;
+
+  // the tetriminos without rotations
+  const upNextTetriminoes = [
+    [1, displayWidth+1, displayWidth*2+1, 2], // lTetrimino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], // zTetrimino
+    [0, displayWidth, 1, displayWidth+1], // oTetrimino 
+    [1, displayWidth+1, displayWidth, displayWidth+2],  // tTetrimino
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] // iTetrimino
+  ];
+
+  // display the shape in the mini-grid display
+  function displayShape() {
+    // remove any trace of a tetrimino from the entire mini grid
+    displaySquares.forEach(square => {
+      square.classList.remove('tetrimino');
+    })
+    upNextTetriminoes[nextRandom].forEach(index => {
+      displaySquares[displayIndex + index].classList.add('tetrimino');
+    })
   }
 })
