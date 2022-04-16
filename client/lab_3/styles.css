@@ -8,7 +8,7 @@
 @media only screen and (max-width: 400px) {
   .photo-grid-item {
     width: 50%;
-    height: 50%;
+    height: 195px;
   }
 }
 
@@ -21,7 +21,7 @@
 @media only screen and (min-width: 961px) {
   .photo-grid-item {
     width: 33.3%;
-    height: 33.3%;
+    height: 300px;
   }
 }
 .lab-header {
@@ -103,10 +103,10 @@
   align-items: center;
 }
 
-.photo-grid-item {
+/*While this is included in the Interneting is Hard instructions, I have omitted it to match the image on the ELMS submission page
+ .photo-grid-item {
   border: 1px solid #fff;
-}
-
+} */
 .first-item {
   order: 1;
 }
