@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.lab-header {
+  background-color: rgba(0,139, 139,0.8);
+  padding: 5px;
+}
+
 .menu-container {
   color: #fff;
   background-color: #5995DA;  /* Blue */
@@ -29,7 +34,11 @@
   justify-content: flex-end;
 }
 
-.login {
+.database-demos {
+  margin-left: auto;
+}
+
+.main-page {
   margin-left: 20px;
 }
 
@@ -48,10 +57,16 @@
   align-items: center;
 }
 
-.social,
+.github,
 .logo,
-.subscribe {
+.group-project {
   border: 1px solid x#5995DA;
+}
+
+.github,
+.group-project {
+  align-self: flex-end;
+  margin-bottom: 20px;
 }
 
 .photo-grid-container {
@@ -80,4 +95,27 @@
 
 .last-item {
   order: -1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-item {
+  border: 1px solid #fff;
+  background-color: #D6E9FE;
+  height: 200px;
+  flex: 1;
+}
+
+.footer-one,
+.footer-three {
+  background-color: #5995DA;
+  flex: initial;
+  width: 300px;
+}
+
+.footer-two {
+  flex: 2;
 }
