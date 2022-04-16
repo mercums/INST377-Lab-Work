@@ -4,6 +4,33 @@
   box-sizing: border-box;
 }
 
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+  .menu {
+        width: 900px;
+    }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  body {
+    background-color: #F5CF8E; /* Yellow */
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  body {
+    background-color: #B2D6FF; /* Blue */
+  }
+
+  .menu {
+      width: 900px;
+  }
+}
 .lab-header {
   background-color: rgba(0,139, 139,0.8);
   padding: 5px;
@@ -13,19 +40,14 @@
   color: #fff;
   background-color: #5995DA;  /* Blue */
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .menu {
   border: 1px;
-  width: 900px;
   display: flex;
   justify-content: space-between;
-}
-
-.menu-container {
-  /* ... */
-  display: flex;
-  justify-content: center;
 }
 
 .links {
