@@ -6,29 +6,22 @@
 
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
-  body {
-    background-color: #F09A9D; /* Red */
+  .photo-grid-item {
+    width: 50%;
+    height: 50%;
   }
-  .menu {
-        width: 900px;
-    }
 }
 
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-  body {
-    background-color: #F5CF8E; /* Yellow */
-  }
+
 }
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
-  body {
-    background-color: #B2D6FF; /* Blue */
-  }
-
-  .menu {
-      width: 900px;
+  .photo-grid-item {
+    width: 33.3%;
+    height: 33.3%;
   }
 }
 .lab-header {
@@ -46,6 +39,7 @@
 
 .menu {
   border: 1px;
+  width: 900px;
   display: flex;
   justify-content: space-between;
 }
@@ -79,6 +73,10 @@
   align-items: center;
 }
 
+.illustration {
+  width: 100%;
+}
+
 .github,
 .logo,
 .group-project {
@@ -101,14 +99,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction:row-reverse;
   align-items: center;
 }
 
 .photo-grid-item {
   border: 1px solid #fff;
-  width: 300px;
-  height: 300px;
 }
 
 .first-item {
